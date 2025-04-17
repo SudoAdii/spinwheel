@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Spin Wheel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0a0a0a, #1f1f1f); /* Dark black gradient */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #fff;
+  animation: gradientMove 10s linear infinite; /* Animation for the gradient */
+  background-size: 400% 400%; /* Increase the size to enable smooth movement */
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* The rest of your CSS code remains unchanged */
+#wheelWrapper {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+
+#pointer {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg); /* Rotated */
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 30px solid #fff;
+  z-index: 20;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+#wheelContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  border: 8px solid #fff;
+  background-color: #000;
+}
+
+#wheel {
+  width: 100%;
+  height: 100%;
+  transition: transform 7s ease-out; /* Keep time at 7 seconds */
+  border-radius: 50%;
+  position: relative;
+}
+
+.segment {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 50%, 100% 0, 100% 100%);
+  transform-origin: 50% 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  color: white;
+}
+
+.memecoinsking { background: #ff4e50; transform: rotate(0deg); }
+.gabboo { background: #fc913a; transform: rotate(72deg); }
+.shitoshi { background: #f9d423; transform: rotate(144deg); }
+.topg { background: #00c9a7; transform: rotate(216deg); }
+.sort { background: #4b6cb7; transform: rotate(288deg); }
+
+#spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  z-index: 10;
+}
+
+#spinButton {
+  margin-top: 30px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(to right, #ff4e50, #f9d423);
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+#spinButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
+</head>
+<body>
+  <div id="wheelWrapper">
+    <div id="pointer"></div>
+    <div id="wheelContainer">
+      <div id="wheel">
+        <div class="segment memecoinsking">‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ! Sort</div>
+        <div class="segment gabboo">‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ Gabboo</div>
+        <div class="segment shitoshi">‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ Shitoshi</div>
+        <div class="segment topg">‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ Top-G</div>
+        <div class="segment sort">‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎‎‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎ ‎‎  Memecoinsking</div>
+      </div>
+      <div id="spinner"></div>
+    </div>
+  </div>
+  <button id="spinButton">🎯 Spin the Wheel</button>
+  <div id="result"></div>
+
+  <script>
+    const wheel = document.getElementById('wheel');
+    const spinButton = document.getElementById('spinButton');
+    const resultElement = document.getElementById('result');
+    const numSegments = 5;
+    const degreesPerSegment = 360 / numSegments;
+    let currentRotation = 0;
+
+    // Sequence of fixed spins: Memecoinsking → Top-G → Memecoinsking → Top-G
+    const spinSequence = ['memecoinsking', 'Top-G'];
+    let sequenceIndex = 0;
+
+    // Keep spin duration fixed to 7 seconds
+    const spinDuration = 4000; 
+
+    spinButton.addEventListener('click', () => {
+      if (spinButton.disabled) return;
+      spinButton.disabled = true;
+      resultElement.textContent = '';
+
+      // Determine the target segment based on the sequence
+      const targetSegmentClass = spinSequence[sequenceIndex];
+      const targetSegmentIndex = ['memecoinsking', 'gabboo', 'shitoshi', 'Top-G', 'sort'].indexOf(targetSegmentClass);
+
+      // Calculate the number of extra spins to add before landing on the target
+      const extraSpins = 5;
+      const targetRotation = currentRotation + (360 * extraSpins) - (targetSegmentIndex * degreesPerSegment) - (degreesPerSegment / 2);
+
+      // Apply the spin animation
+      wheel.style.transition = `transform ${spinDuration / 1000}s ease-out`;
+      wheel.style.transform = `rotate(${targetRotation}deg)`;
+
+      // After the spin ends
+      setTimeout(() => {
+        wheel.style.transition = 'none';
+        currentRotation = targetRotation % 360;
+        wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+        // Display the result based on the fixed sequence
+        resultElement.textContent = `🎉 Landed on: ${targetSegmentClass.charAt(0).toUpperCase() + targetSegmentClass.slice(1)}`;
+
+        // Move to the next item in the sequence (Memecoinsking → Top-G → Memecoinsking → ...)
+        sequenceIndex = (sequenceIndex + 1) % spinSequence.length;
+        spinButton.disabled = false;
+      }, spinDuration);
+    });
+  </script>
+</body>
+</html>
